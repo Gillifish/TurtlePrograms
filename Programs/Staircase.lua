@@ -14,15 +14,20 @@ function Staircase(y)
     while (count ~= y) do
         _, block, msg = checkForBlock()
 
-        if block == "minecraft:gravel" then
-            print("[TURTLE] Problematic block detected...")
-            break
+        turtle.dig()
+
+        while turtle.detect() == true do
+            turtle.dig()
         end
 
-        turtle.dig()
         turtle.forward()
         turtle.digUp()
         turtle.dig()
+
+        while turtle.detect() == true do
+            turtle.dig()
+        end
+        
         turtle.forward()
         turtle.digUp()
         turtle.back()
