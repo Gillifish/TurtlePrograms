@@ -11,7 +11,12 @@ end
 function Staircase(y)
     local count = 0
  
-    while (count ~= y) do
+    while true do
+
+        if count == y then
+            break
+        end
+
         _, block, msg = checkForBlock()
 
         turtle.dig()
@@ -27,7 +32,7 @@ function Staircase(y)
         while turtle.detect() == true do
             turtle.dig()
         end
-        
+
         turtle.forward()
         turtle.digUp()
         turtle.back()
