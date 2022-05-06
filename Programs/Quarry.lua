@@ -8,12 +8,19 @@ function checkForBlock()
     end
 end
 
+function digCheck()
+    while turtle.detect() == true do
+        turtle.dig()
+    end
+end
+
 function lineDig(length)
     local count = 0
     repeat
         local block = turtle.detect()
         if block then
            turtle.dig()
+           digCheck()
            turtle.forward()
         else
             turtle.forward()
@@ -26,6 +33,7 @@ end
 function digPositionRight()
     turtle.turnRight()
     turtle.dig()
+    digCheck()
     turtle.forward()
     turtle.turnRight()
 end
@@ -33,6 +41,7 @@ end
 function digPositionLeft()
     turtle.turnLeft()
     turtle.dig()
+    digCheck()
     turtle.forward()
     turtle.turnLeft()
 end
