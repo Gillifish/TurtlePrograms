@@ -102,18 +102,25 @@ end
 
 function Quarry(x, y, z)
     local yCount = 0
+	local percentDone = 0
     if (y == 0) then
         digPlane(x, z)
     else
         repeat
             digPlane(x, z)
             if (yCount ~= y - 1) then
-                turtle.digUp()
-                turtle.up()
+                turtle.digDown()
+                turtle.down()
                 yCount = yCount + 1
             else
                 yCount = yCount + 1
             end
+
+            tern.clear()
+            term.setCursorPos(1,1)
+			percentDone = math.ceil((yCount / y) * 100)
+			print(percentDone)
+
         until(yCount == y)
     end
 end
