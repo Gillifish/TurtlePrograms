@@ -1,3 +1,4 @@
+-- Initializes the nodes
 local north = {facing = "north"}
 local west = {facing = "west"}
 local east = {facing = "east"}
@@ -5,55 +6,70 @@ local south = {facing = "south"}
 
 local currentFacing = nil
 
-function initFacing(facing)
+-- Initializes the current turtle facing
+local function initFacing(facing)
     if facing == "north" then
         currentFacing = north
         return
-    end
-    
-    if facing == "east" then
+    elseif facing == "east" then
         currentFacing = east
         return
-    end
-    
-    if facing == "west" then
+    elseif facing == "west" then
         currentFacing = west
         return
-    end
-    
-    if facing == "south" then
+    elseif facing == "south" then
         currentFacing = south
         return
     end
 end
 
-function setFacing(facing)
+local function getCurrentFacing() 
+    return currentFacing
+end
+
+local function setFacing(facing)
     if currentFacing.facing == facing then
         return
     end       
     
-    while currentFacing.facing ~= facing do
+    if currentFacing.right.facing == facing then
+        turtle.turnRight()
+        currentFacing = currentFacing.right
+        return
+    elseif currentFacing.left.facing == facing then
         turtle.turnLeft()
         currentFacing = currentFacing.left
+        return
+    elseif currentFacing.opposite.facing == facing then
+        turtle.turnLeft()
+        turtle.turnLeft()
+        currentFacing = currentFacing.opposite
+        return
     end
 end
 
-function initList()
+-- Links the direction nodes together
+local function initList()
     north.left = west
     north.right = east
+    north.opposite = south
     
     west.left = south
     west.right = north
+    west.opposite = east
     
     east.left = north
     east.right = south
+    east.opposite = west
     
     south.left = east
     south.right = west
+    south.opposite = north
 end
 
 return {
     initList = initList,    
     initFacing = initFacing,
+    getCurrentFacing = getCurrentFacing,
     setFacing = setFacing
 }

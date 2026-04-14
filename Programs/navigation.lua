@@ -1,7 +1,10 @@
+-- Imports
 local facing = require("facing")
 
+-- table for tracking the turtles moved position
 local transform = {x = 0, y = 0, z = 0}
 
+-- Initialize the linked list for the facing
 facing.initList()
 facing.initFacing("north")
 
@@ -167,7 +170,7 @@ local function directMine(target)
     mineX(target)
     mineY(target)
     mineZ(target)
-    facing.setFacing("north") 
+    facing.setFacing("north")
     transform.x = transform.x + target.x
     transform.y = transform.y + target.y
     transform.z = transform.z + target.z  
@@ -175,6 +178,6 @@ end
 
 return {
 	astar = astar,
- directMine = directMine,
- getTransform = getTransform
+    directMine = directMine,
+    getTransform = getTransform
 }
