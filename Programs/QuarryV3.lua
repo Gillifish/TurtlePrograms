@@ -1,6 +1,7 @@
 -- Includes
 local facing = require("facing")
 
+-- Init facing module
 facing.initList()
 facing.initFacing("north")
 
@@ -23,6 +24,7 @@ local function mineForward(distance)
 	end
 end
 
+-- Moves turtle to be ready to mine the next line
 local function reposition()
 	if facing.getCurrentFacing() == "north" then
 		turtle.turnRight()
@@ -41,6 +43,7 @@ local function reposition()
 	end
 end
 
+-- Moves turtle to the starting mining position
 local function home()
 	if z % 2 == 0 then
 		facing.setFacing("west")
@@ -62,6 +65,7 @@ local function home()
 	turtle.setFacing("north")
 end
 
+-- Mines a horizontal layer
 local function mineLayer()
 	for i = 1, z do
 		mineForward(x)
@@ -73,6 +77,7 @@ local function mineLayer()
 	home()
 end
 
+-- Main
 local function quarryV3()
 	-- Setup turtle
 	turtle.dig()
