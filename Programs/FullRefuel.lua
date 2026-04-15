@@ -1,6 +1,5 @@
 function Refuel()
     local count = 1
-    local fueled = true
 
     while count ~=16 do
         turtle.select(count)
