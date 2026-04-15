@@ -102,42 +102,42 @@ local function astar(world, start, goal)
 end
 
 local function mineX(target)
-    
+
     if target.x == 0 then
         return
     end
-    
+
     local distance = math.abs(target.x)
-    
+
     if target.x < 0 then
         facing.setFacing("west")
     end
-    
+
     if target.x > 0 then
         facing.setFacing("east")
     end
 
     for i = 0, distance - 1 do
         turtle.dig()
-        turtle.forward() 
+        turtle.forward()
     end
 
 end
 
 local function mineY(target)
-    
+
     if target.y == 0 then
         return
     end
-    
+
     local distance = math.abs(target.y)
-    
+
     for i = 0, distance - 1 do
         if target.y > 0 then
             turtle.digUp()
             turtle.up()
         end
-        
+
         if target.y < 0 then
             turtle.digDown()
             turtle.down()
@@ -149,17 +149,17 @@ local function mineZ(target)
     if target.z == 0 then
         return
     end
-    
+
     local distance = math.abs(target.z)
-    
+
     if target.z < 0 then
         facing.setFacing("north")
     end
-    
+
     if target.z > 0 then
         facing.setFacing("south")    
     end
-    
+
     for i = 0, distance - 1 do
         turtle.dig()
         turtle.forward()
