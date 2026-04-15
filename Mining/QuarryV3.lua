@@ -10,6 +10,7 @@ local x = tonumber(arg[1])
 local y = tonumber(arg[2])
 local z = tonumber(arg[3])
 
+-- Check for command line args; gives usage if error
 if x == nil or y == nil or z == nil then
 	term.setCursorPos(1, 1)
 	term.clear()
