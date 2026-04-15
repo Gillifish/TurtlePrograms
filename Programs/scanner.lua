@@ -64,16 +64,15 @@ local function findBlock(blockName, radius)
     if scanRes == nil then
         error("Error")
     end
-            
+
     for _, block in ipairs(scanRes) do
         if block.name == blockName then
             data[dataIndex] = block
             dataIndex = dataIndex + 1
         end
     end
-    
+
     return data
-    
 end
 
 return {
