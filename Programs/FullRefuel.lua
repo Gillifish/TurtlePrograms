@@ -4,8 +4,7 @@ function Refuel()
 
     while count ~=16 do
         turtle.select(count)
-        while fueled do
-            fueled = turtle.refuel()
+        while turtle.refuel() do
         end
         count = count + 1
     end
