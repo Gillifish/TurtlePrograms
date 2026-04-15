@@ -1,4 +1,4 @@
-function Refuel()
+local function refuel()
     local count = 1
 
     while count ~=16 do
@@ -10,4 +10,4 @@ function Refuel()
     turtle.select(1)
 end
 
-Refuel()
+refuel()
