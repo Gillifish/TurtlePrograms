@@ -7,6 +7,11 @@ end
 
 local world = {}
 
+-- Wrapper for scan function
+local function scan(blockName, radius)
+    return scanner.scan(blockName, radius)
+end
+
 local function setBlock(x, y, z, state)
     if not world[x] then world[x] = {} end
     if not world[x][y] then world[x][y] = {} end
@@ -76,6 +81,7 @@ local function findBlock(blockName, radius)
 end
 
 return {
+    scan = scan,
     scanIntoMap = scanIntoMap,
     getWorld    = getWorld,
     isScanned   = isScanned,

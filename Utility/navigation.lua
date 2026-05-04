@@ -173,7 +173,7 @@ local function directMine(target)
     facing.setFacing("north")
     transform.x = transform.x + target.x
     transform.y = transform.y + target.y
-    transform.z = transform.z + target.z  
+    transform.z = transform.z + target.z
 end
 
 return {
